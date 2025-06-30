@@ -1,3 +1,4 @@
+import { Router } from "@vaadin/router";
 import { LitElement, html, css } from "lit";
 import { customElement } from "lit/decorators.js";
 
@@ -48,10 +49,12 @@ export class SignupView extends LitElement {
 
     try {
       const serverReponse = await fetch(
-        "http://localhost:3000/api/v1/users/create",requestInit 
+        "http://localhost:8000/api/v1/users/create",requestInit 
       );
       const jsResponse = await serverReponse.json();
-      console.log(jsResponse);
+      console.log(jsResponse)
+      Router.go('/login')
+
     } catch (err) {
       console.log(err);
       submitButton.disabled = false;
@@ -88,6 +91,11 @@ export class SignupView extends LitElement {
               id="lastname"
             />
           </div>
+          <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-control" name="username" id="username" />
+          </div>
+
           <div class="mb-3">
             <label for="email" class="form-label">Email address</label>
             <input type="email" class="form-control" name="email" id="email" />

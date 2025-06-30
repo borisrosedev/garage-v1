@@ -1,3 +1,4 @@
+import { Router } from "@vaadin/router";
 import { LitElement, html, css } from "lit";
 import { customElement } from "lit/decorators.js";
 
@@ -8,6 +9,11 @@ export class NavbarComponent extends LitElement {
     return this; // rend dans le light DOM
   }
 
+
+  private _onLogoutClick(){
+    localStorage.removeItem('garage:token')
+    Router.go('/login')
+  }
 
   render() {
     return html`
@@ -75,10 +81,19 @@ export class NavbarComponent extends LitElement {
                   </ul>
                 </li>
               </ul>
-              <section class="my-3">
-                <a href="/login" class="btn btn-outline-success">Log in</a>
-                <a href="/signup" class="btn btn-success">Sign up</a>
-              </section>
+              ${
+                !localStorage.getItem('garage:token') ? html`
+                  <section class="my-3">
+                    <a href="/login" class="btn btn-outline-success">Log in</a>
+                    <a href="/signup" class="btn btn-success">Sign up</a>
+                  </section>
+              `:  html`<section class="my-3">
+                    <button @click="${() => Router.go('/dashboard')}" class="btn btn-outline-success">Dashboard</button>
+                    <button @click="${this._onLogoutClick}" class="btn btn-outline-danger">Log out</button>
+                
+                  </section>
+                  `
+              }
             </div>
           </div>
         </div>

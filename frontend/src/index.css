@@ -5,6 +5,18 @@
 
 }
 
+.dashboard__main {
+    padding-top: 10vh;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.signup__main {
+    padding-top: 10vh;
+    padding-bottom: 100px;
+}
 .login__main, .signup__main {
     flex-direction: column;
     align-items: center;

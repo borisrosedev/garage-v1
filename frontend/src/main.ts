@@ -9,6 +9,7 @@ import "./pages/not-found-view";
 import "./pages/signup-view";
 import "./pages/tools-view";
 import "./pages/car-parts-view";
+import "./pages/dashboard-view";
 
 @customElement("app-index")
 export class AppIndex extends LitElement {
@@ -23,6 +24,7 @@ export class AppIndex extends LitElement {
       { path: "/", component: "home-view" },
       { path: "/login", component: "login-view" },
       { path: "/signup", component: "signup-view" },
+      { path : "/dashboard", component: "dashboard-view"},
       { path: "/car-tools", component: "tools-view"},
       { path: "/car-parts", component: "car-parts-view"},
       { path: "(.*)", redirect: "/not-found-view" },
