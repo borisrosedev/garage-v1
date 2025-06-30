@@ -48,7 +48,7 @@ export class SignupView extends LitElement {
 
     try {
       const serverReponse = await fetch(
-        "http://localhost:3000/api/v1/user/create",requestInit 
+        "http://localhost:3000/api/v1/users/create",requestInit 
       );
       const jsResponse = await serverReponse.json();
       console.log(jsResponse);
